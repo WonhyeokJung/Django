@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  practice0309
+{% endblock title %}
+
+
+{% block content %}
+  <h1>로또 당첨 횟수를 알아보자.</h1>
+  <hr align = "left" style="border:solid 2px grey; width:50%">
+  <h2>
+    {{ num.drwNo }}회차 당첨번호 : 
+    [
+    {{ num.drwtNo1 }},
+    {{ num.drwtNo2 }},
+    {{ num.drwtNo3 }},
+    {{ num.drwtNo4 }},
+    {{ num.drwtNo5 }},
+    {{ num.drwtNo6 }}
+    ]
+    + {{ num.bnusNo }}
+  </h2>
+
+  <h4>
+    총 구매 수 : {{ buy }}회
+  </h4>
+
+  <ul>
+    <li>
+      1등 : {{result.0}}번
+    </li>
+    <li>
+      2등 : {{result.1}}번
+    </li>
+    <li>
+      3등 : {{result.2}}번
+    </li>
+    <li>
+      4등 : {{result.3}}번
+    </li>
+    <li>
+      5등 : {{result.4}}번
+    </li>
+    <li>
+      꽝 : {{result.5}}번
+    </li>
+  </ul>
+
+{% endblock content %}

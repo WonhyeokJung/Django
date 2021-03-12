@@ -1,0 +1,13 @@
+{% extends 'base.html' %}  
+{# extends 는 하나만 가능 include라고 다른거 포함 가능 #}
+
+{% block content %}
+  <h1>Articles</h1>
+  {# Model로 DB조회후 가져옴 #}
+  {% for article in articles %}
+    <p>글 번호 : {{ article.pk }}</p>
+    <p>글 제목 : {{ article.title }}</p>
+    <p>글 내용 : {{ article.content }}</p>
+    <hr>
+  {% endfor %}
+{% endblock content %}

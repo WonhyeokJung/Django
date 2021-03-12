@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Edit page{% endblock title %}
+
+{% block body %}
+  <h1>This is Edit page</h1>
+  {#하드코딩 action = "practice/{{student.id}}/update"#}
+  {#pk= student.pk 이러면 인자순서 상관없으나 student.pk면 순서대로 써야함. def update(request, pk) 순서대로#}
+  <form action="{% url 'appname:update' student.pk %}" method="POST">  {#여기선 update 함수로 연결한다.#}
+    {% csrf_token %} {#위조 방지 장치. POST와 함께 쓰임. django 서버에서 준 token이 있나없나 확인#}
+    <div>
+      name: <input type="text" name="name" value="{{ student.name }}">
+    </div>
+    <div>
+      age: <input type="text" name="age" value="{{ student.age }}">
+    </div>
+    <div>
+      {#placeholder는 가이드 + 부분 수정이 안되므로, placeholder말고 value 쓸것.#}
+      major: <input type="text" name="major" value="{{ student.major }}">
+    </div>
+    {#Textarea는 값 사이에 넣어줘야함.#}
+      intro: <textarea name="intro" id="" cols="30" rows="10">{{ student.intro }}</textarea>
+    <div>
+      <input type="submit" class="btn btn-primary">
+    </div>
+  </form>
+{% endblock body %}

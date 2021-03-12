@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Detail page{% endblock title %}
+
+{% block body %}
+  <h1>This is Detail page</h1>
+  <h2>{{ student.id }} => {{ student.name|upper }}</h2>
+  <h3>{{ student.age }} | {{ student.major|upper }}</h3>
+  <p>{{ student.intro }}</p>
+  <a href="{% url 'appname:index' %}" class="btn btn-primary">List</a>
+  <br>
+  <a href="{% url 'appname:edit' student.pk %}" class ="btn btn-danger">Edit</a>  {#url에 함수 넘겨주는것#}
+ 
+ {# form태그 POST요청 받는 유일한 방법 #}
+  <form action="{% url 'appname:delete' student.id %}" method="POST" sytle="display: inline-block">
+    {% csrf_token %} 
+    {# Value는 그냥 이름 주기 #}
+    <input type="submit" class="btn btn-danger" onclick ="return confirm('삭제하시겠습니까?')" value="삭제">
+ 
+    {#기존form태그. 얘는 작동을 안함. form 태그 안에 있어도. a태그는 form의 하위 태그가 아니기 때문.#}
+    <a href="{% url 'appname:delete' student.pk %}" class ="btn btn-secondary">Delete</a> {#삭제시 browser 온클릭 제시#}
+  </form>
+{% endblock body %}

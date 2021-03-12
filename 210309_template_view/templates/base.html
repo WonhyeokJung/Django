@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    THIS IS BASE TEMPLATE
+    {% block title %}
+  
+    {% endblock title %}
+  </title>
+</head>
+<body>
+  {% comment %} <p>THIS IS BASE TEMPLATE</p> {% endcomment %}
+  {% block content %}
+  
+  {% endblock content %}
+</body>
+</html>
+
+{% comment "" %}
+왜 이렇게 base.html을 따로 작성하는가?
+사이트 전체가 공유하는 사이트 양식을 계속 입력하기엔 너무 손해가 크기 때문에
+전체가 공유하는 양식은 여기에서 공유하기 위함이다.
+{% endcomment %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ping
+{% endblock title %}
+
+{% block content %}
+<h1>ping</h1>
+
+{% comment "" %}
+  action => 수신인(목적지)
+  method => 공개/비공개 여부
+    = GET : 모든 데이터가 (URL에) 공개되어 전송
+    - POST : 데이터가 URL에 공개되지 않음
+{% endcomment %}
+
+{% comment %} <form action="practice0309/pong/">
+경로 변경시 eg. pratice0309 > p0309 문제 막기 수월. {% endcomment %}
+<form action="{% url 'pong' %}" method="GET"> {#method 비워두면 default가 GET#}
+  <div> {#div는 줄 나누기 역할#}
+  <label for="kor-name">한글이름</label>  <!--label은 인풋에 대한 설명역할 for kor-name 위한 -->
+  <input type="text" name ="kor-name" id="kor-name">
+  </div>
+  <label for="eng-name">English Name</label>
+  <input type="text" name ="eng-name" id="eng-name"> {#id는 label과 연관, name은 def ping pong과 연관#}
+  {# **필수** name = input의 키. 내가 입력한 input은 밸류. 그리고 name은 URL에도 출력된다. 없으면 데이터가 넘어가질 못함.#}
+  {# 주소가 /?kor-name=입력값&eng-name=입력값 이런식으로 변함. requestget없이도 method get이므로#}
+  <input type="submit" value="전송"> {#제출 역할(작성한것보냄)#}
+</form>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+pong
+{% endblock title %}
+
+{% block content %}
+<h1>pong</h1>
+<p>{{ kor_name }}</p>
+<p>{{ eng_name }}</p>
+<p>{{ today|date:"Y년 m월 d일 (D) A h:i" }}</p>
+{% endblock content %}

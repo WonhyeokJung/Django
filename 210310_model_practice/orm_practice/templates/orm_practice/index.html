@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Index page{% endblock title %}
+
+{% block body %}
+  <a href="{% url 'appname:new' %}" class="btn btn-primary">
+    New
+  </a>
+  <ul>
+  {% for student in students %}
+    <li>
+      {% comment %} <a href="/practice/{{ student.id }}">{{ student.name }}</a> {% endcomment %}
+      <a href="{% url 'appname:detail' student.id %}" style="text-decoration:none">
+        {{ student.name }}
+      </a>  {# 주소 연결해서 쓰고 싶을때.#}
+    </li>  
+  {% endfor %}
+  </ul>
+{% endblock body %}
