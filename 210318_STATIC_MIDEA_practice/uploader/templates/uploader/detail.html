@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock head %}
+
+{% block content %}
+<h1>{{ article.title }}</h1>
+<p>{{ article.content }}</p>
+이미지 강요 안해서 없으면 안뜹니다.(BLANK=true)
+{% if article.image %}
+  <img src="{{ article.image.url }}" alt="{{ article.image }}">
+{% endif %}
+{% endblock content %}

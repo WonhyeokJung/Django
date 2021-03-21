@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}INDEX{% endblock title %}
+
+{% block body %}
+  <div class="container">
+    <h1>INDEX</h1>
+    <a class="text-decoration-none" href="{% url 'new' %}">NEW</a>
+  <br>
+  <br>
+    {% for board in boards %}
+      <h1>제목 : {{ board.title }}</h1>
+      <p>내용 : {{ board.content }}</p>
+      <a class="text-decoration-none" href="{% url 'detail' board.id %}">DETAIL ID No.{{ board.id }}</a>
+    {% endfor %}
+  </div>
+{% endblock body %}

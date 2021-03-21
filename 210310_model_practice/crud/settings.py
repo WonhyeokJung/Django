@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+ALLOWED_HOSTS = ['127.0.0.1']
+
 INSTALLED_APPS = [
     'orm_practice',
     # 3rd party apps
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# 모든 요청이 거쳐가야만 하는 곳. POST도 여기를 거쳐간다.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

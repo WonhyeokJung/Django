@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock head %}
+
+
+{% block content %}
+{# 파일전송시 html에서 enctype(암호화 타입) 필수(img 파일 등) #}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit">
+</form>
+
+
+
+{% endblock content %}
+

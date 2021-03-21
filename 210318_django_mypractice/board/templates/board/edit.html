@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}EDIT{% endblock title %}
+
+
+{% block body %}
+  <h1>EDIT</h1>
+  <hr>
+  {# action 없어도 됨. 자기자리에서 왔다갔따 하니까 #}
+  <form action="{% url 'board:new' %}" method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value = "제출">
+  </form>
+{% endblock body %}

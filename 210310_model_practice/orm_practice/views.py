@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect  # redirect 임포트
+from django.shortcuts import render, redirect, get_object_or_404  # redirect 임포트 / 에러 발생시 404페이지
 from .models import Student  # 데이터베이스 담당자 models.py import
 
 # Create(생성)
@@ -13,11 +13,14 @@ def create(request):
         student.age = request.POST.get('age')
         student.major = request.POST.get('major')
         student.intro = request.POST.get('intro')
+        student.created_at = request.POST.get('created_at')
+        student.updated_at = request.POST.get('updated_at')
         student.save()
         # return redirect('index')  # 다시 다른 곳으로 보냄. urls의 name='index'로
         return redirect('appname:detail', pk=student.pk)  # detail은 pk인자 하나가 필요함 detail/pk구조
         # appname:detail인걸 보면, urls의 name값 참조해서 불러옴. redirect의 특징
-    return redirect('/practice/new/') # 지멋대로 오면, 여기 거쳐서 오게 되돌려보냄
+    elif request.method == 'GET':
+        return redirect('/practice/new/') # 지멋대로 오면, 여기 거쳐서 오게 되돌려보냄. 하드코딩방식
 
 
 # Retrieve / Read (조회)
@@ -27,13 +30,14 @@ def index(request):
     students = Student.objects.all()
     # context는 아주 간결하게. 코드는 위에 다 작성
     context = {
-        'students':students
+        'students':students,
     }
     return render(request, 'orm_practice/index.html', context)
 
 # 단일조회
 def detail(request, pk):
-    student = Student.objects.get(pk=pk)  # detail의 pk와 get pk는 다른것임.
+    student = get_object_or_404(Student, pk=pk) # 클래스명, 변수들
+    # student = Student.objects.get(pk=pk)  # detail의 pk와 get pk는 다른것임.
     context ={
         'student' : student,
     }
@@ -58,6 +62,8 @@ def update(selfs, pk):
         student.age = selfs.POST.get('age')
         student.major = selfs.POST.get('major')
         student.intro = selfs.POST.get('intro')
+        student.created_at = selfs.POST.get('created_at')
+        student.updated_at = selfs.POST.get('updated_at')
         student.save()
         return redirect('appname:detail', pk=student.pk)
     return redirect('appname:edit', pk=pk) # 지멋대로 주소쳐서 들어오면 GET으로 오므로 redirect시킴

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}DETAILS{% endblock title %}
+
+{% block body %}
+<h1>DETAIL</h1>
+<hr>
+  <p>
+    <h1>{{ board.title }}</h1>
+  </p>
+  <p>
+    {{ board.content }}
+  </p>
+  <p>작성일 : {{ board.created_at }}</p>
+  <p>수정일 : {{ board.updated_at }}</p>
+
+  <p>
+    <a class="text-decoration-none" href="{% url 'edit' board.pk %}">EDIT</a>
+    {% comment %} <form action="{% url 'delete' board.pk %}" method="POST">
+      <input type="submit" class="text" onclick ="return confirm('삭제하시겠습니까?')" value="삭제">
+    </form> {% endcomment %}
+      {# a태그는 form 태그 내에서 작동 X #}
+    <a class="text-decoration-none" href="{% url 'delete' board.pk %}">DELETE</a>
+  </p>
+  <a class="text-decoration-none" href="{% url 'index' %}">BACK</a>
+{% endblock body %}

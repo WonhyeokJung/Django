@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>CONTACT</h1>
+<!--Form Tag는 직접 만들어줘야함-->
+<form action="#" method="POST">  <!--action에 지정한 곳으로 연결. http://naver.com 이면 submit누를시 보냄-->
+<!--method 입력없으면 현재 페이지에서 GET요청보냄. action없고 method있으면 현재 url에 POST요청을 보내서 현재 페이지 함수가 작동.-->
+  {% csrf_token %}
+  {{ contact_form.as_p }}  {#p태그로 contact_form 불러옴#}
+  <input type="submit">
+  {% comment %} <label for="id_name">Name:</label>
+  <input type="text" name="name" id="id_name" maxlength="5" minlength="2">
+  <label for="id_email">Email:</label>
+  <input type="email" name="email" id="id_email">
+  <input type="number" name="age" id="id_age" min="3" max="100">
+  <textarea name="content" id="id_content" cols="30" rows="10"></textarea>
+  <input type="submit"> {% endcomment %}
+</form>
+{% endblock content %}

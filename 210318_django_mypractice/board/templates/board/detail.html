@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Detail</h1>
+<h1>{{ reservation.name }}</h1>
+<p>{{ reservation.number }}</p>
+<a href="{% url 'board:edit' reservation.pk %}" class="text-decoration-none">EDIT</a>
+<form action="{% url 'board:delete' reservation.pk %}" method="POST">
+  {% csrf_token %}
+{# 괄호안에 "" 쓰면 파이썬이 순서 잘못인식하니 안에는 ''#}
+  <input type="submit" value="Delete" onclick="return confirm('ㄹㅇ')">
+</form>
+{% endblock body %}

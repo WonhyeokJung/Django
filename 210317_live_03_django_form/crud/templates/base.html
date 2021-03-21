@@ -1,0 +1,23 @@
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% bootstrap_css %}
+  <title>Document</title>
+</head>
+<body>
+  {# 여기에 nav bar 자체를 다 넣어버리면 유지보수 자체가 매우 불편해짐. temp 따로 만드록 include 생성 #}  
+  {% include 'nav.html' %} {#  base.html 그냥 쓰는 것처럼 여기도 nav.html 그냥 DIRS에 경로 선언 해뒀으니까template#}
+  {# header footer도 이처럼 쉽게 추가 가능 #}
+  
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  {% bootstrap_javascript %}
+</body>
+</html>

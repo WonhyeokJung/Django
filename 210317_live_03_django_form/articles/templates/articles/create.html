@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <hr>
+    <hr>
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  
+  <hr>
+  {#하나씩 따로 해보기#}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div>
+      {{ form.title.errors }} {# 에러포함시 출력. erros를 지운다면 에러가 나도 에러메세지 출력 X #}
+      {{ form.title.label_tag }}
+      {{ form.title }}
+    </div>
+    <div>
+      {{ form.content.errors }} {# 에러포함시 출력. erros를 지운다면 에러가 나도 에러메세지 출력 X #}
+      {{ form.content.label_tag }}
+      {{ form.content }}
+    </div>
+    <input type="submit">
+  </form>
+
+  <hr>
+  {# for태그 사용 예제 #}
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field.erros }}
+      {{ field.label_tag }}
+      {{ field }}
+    {% endfor %}
+    <input type="submit">
+  </form>
+
+  <hr>
+  {# for 태그 + 에러 다른 방식 적용 #}
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.errors %}
+        <ol> {# 번호 출력. ol li지우고 div로 바꾸면 깔끔해질 것. #}
+        {% for error in field.errors %}
+          <li class="alert alert-warning" role="alert"><strong>{{ error|escape }}</strong></li>
+        {% endfor %}
+        </ol>
+      {% endif %}
+      {{ field.label_tag }}
+      {{ field }}
+    {% endfor %}
+    <input type="submit">
+  </form>
+
+  <h2>Bootstrap Form은 forms.py의 form-control로 작동중이다.</h2>
+
+  <hr>
+  <a href="{% url 'articles:index' %}">[back]</a>
+{% endblock %}

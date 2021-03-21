@@ -2,14 +2,17 @@
 {% block title %}Index page{% endblock title %}
 
 {% block body %}
-  <a href="{% url 'appname:new' %}" class="btn btn-primary">
-    New
+  <h1>INDEX</h1>
+  {% comment %} <a href="{% url 'appname:new' %}" class="btn btn-primary"> {% endcomment %}
+  <a href="{% url 'appname:new' %}" class="text-decoration-none">
+    NEW
   </a>
+  <p></p>
   <ul>
-  {% for student in students %}
+  {% for student in students %}  {#받은 Context의 students#}
     <li>
       {% comment %} <a href="/practice/{{ student.id }}">{{ student.name }}</a> {% endcomment %}
-      <a href="{% url 'appname:detail' student.id %}" style="text-decoration:none">
+      <a href="{% url 'appname:detail' student.id %}" class="text-decoration-none">
         {{ student.name }}
       </a>  {# 주소 연결해서 쓰고 싶을때.#}
     </li>  

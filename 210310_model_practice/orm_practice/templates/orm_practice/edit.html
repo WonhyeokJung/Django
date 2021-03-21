@@ -8,10 +8,11 @@
   <form action="{% url 'appname:update' student.pk %}" method="POST">  {#여기선 update 함수로 연결한다.#}
     {% csrf_token %} {#위조 방지 장치. POST와 함께 쓰임. django 서버에서 준 token이 있나없나 확인#}
     <div>
-      name: <input type="text" name="name" value="{{ student.name }}">
+      name: <input type="text" name="name" value="{{ student.name }}" maxlength="5" minlength="1">
     </div>
     <div>
-      age: <input type="text" name="age" value="{{ student.age }}">
+    <!-- 숫자도 코드는 같음 maxlength minlength-->
+      age: <input type="text" name="age" value="{{ student.age }}" maxlength="100" minlength="3">
     </div>
     <div>
       {#placeholder는 가이드 + 부분 수정이 안되므로, placeholder말고 value 쓸것.#}

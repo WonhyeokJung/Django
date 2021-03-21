@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>NEW</h1>
+<!--Form Tag는 직접 만들어줘야함-->
+<form action="{% url 'new' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}  {#p태그로 contact_form 불러옴#}
+  <input type="submit">
+  {% comment %} <label for="id_name">Name:</label>
+  <input type="text" name="name" id="id_name" maxlength="5" minlength="2">
+  <label for="id_email">Email:</label>
+  <input type="email" name="email" id="id_email">
+  <input type="number" name="age" id="id_age" min="3" max="100">
+  <textarea name="content" id="id_content" cols="30" rows="10"></textarea>
+  <input type="submit"> {% endcomment %}
+</form>
+{% endblock content %}

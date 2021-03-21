@@ -6,6 +6,7 @@
   <h2>{{ student.id }} => {{ student.name|upper }}</h2>
   <h3>{{ student.age }} | {{ student.major|upper }}</h3>
   <p>{{ student.intro }}</p>
+  <p>{{ student.created_at }}</p>
   <a href="{% url 'appname:index' %}" class="btn btn-primary">List</a>
   <br>
   <a href="{% url 'appname:edit' student.pk %}" class ="btn btn-danger">Edit</a>  {#url에 함수 넘겨주는것#}

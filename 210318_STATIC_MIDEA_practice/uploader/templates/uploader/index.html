@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!-- load static해야 활용 가능-->
+{% load static %}
+
+{# css 통한 스타일 정해주기#}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'uploader/css/main.css' %}">
+{% endblock head %}
+
+
+
+
+{% block content %}
+<h1>Index page</h1>
+{# src 이미지 주소 , alt는 ? #}
+<img src="https://s3.ap-northeast-2.amazonaws.com/univ-careet/FileData/Article/243/d165967c-5881-485b-82a5-a53a55bec706.PNG" alt="welcome">
+{# html(Alt+B)에선 나오지만 Server에선 안나옴 #}
+<img src="../../../dully.png" alt="welcome">
+<!-- 서버에서 이미지는 다른 방식으로 저장해야한다.
+받아보는 사람에게는 경로로는 IMG를 받는게 아니고, 응답 HTML을 받는데
+이미지 위치를 알 수 없음. urls.py에선 듣도 보도 못한 정보이기때문에.-->
+<img src="/static/uploader/dully.png" alt="welcome"> {#즈얼대 경로#}
+<img src="{% static 'uploader/dully.png' %}" alt="">
+
+<!--css 실습. 경로에 css images만들고 거기에 dully사진과 main.css만들어줌-->
+{% endblock content %}

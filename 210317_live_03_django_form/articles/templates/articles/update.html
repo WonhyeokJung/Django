@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1>UPDATE</h1>
+  <form action="{% url 'articles:update' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <hr>
+    <!-- 추가된 부트스트랩-->
+    {% comment %} {% bootstrap_form form %} {% endcomment %}
+    <hr>
+    {# 레이아웃을 통쨰로 변경해줌 #}
+    {% bootstrap_form form layout='horizontal' %}
+    {# cancel 누를시 원래대로 돌아감(reset)#}
+    {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {% endbuttons %}
+    <!---->
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'articles:index' %}">[back]</a>
+{% endblock  %}

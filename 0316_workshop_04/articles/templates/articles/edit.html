@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Edit page{% endblock title %}
+
+{% block body %}
+  <h1>EDIT</h1>
+  <form action="{% url 'update' board.pk %}" method="POST">
+    {% csrf_token %}
+    <div>
+      TITLE: <input type="text" name="title" value="{{ board.title }}" maxlength="5" minlength="1">
+    </div>
+    <div>
+      CONTENT: <textarea name="content" id="" cols="30" rows="10">{{ board.content }}</textarea>
+    </div>
+    <div>
+      <input type="submit" value="수정">
+    </div>
+  </form>
+{% endblock body %}

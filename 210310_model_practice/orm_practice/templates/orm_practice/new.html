@@ -4,6 +4,7 @@
 {% block body %}
   <form action="{% url 'appname:create' %}" method="POST">  {#Create 함수로 연결한다.#}
     {% csrf_token %}
+    {% comment %} <input type="hidden" name="csrftoken" value="adgadgjaldghladgahdlghads"> {% endcomment %}
     <div>
       name: <input type="text" name="name">
     </div>
